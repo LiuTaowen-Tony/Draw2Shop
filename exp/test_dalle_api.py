@@ -29,9 +29,9 @@ image_path = "sketch2.jpg"
 base64_image = encode_image(image_path)
 model = "pixtral-12b-2409"
 
-product_name = 'A t-shirt with heart image on it.with short sleeve'
+user_input = 'A t-shirt with heart image on it.with short sleeve'
 prompt = """
-Please generate a detailed fashion design description based on the input picture of a {}. 
+Please generate a detailed fashion design description based on the input picture and this information: {}. 
 Tailor the description to the specific type of garment (e.g., t-shirt, jacket, coat, dress, skirt) 
 and focus on the most relevant features for that garment. Include details such as:
 
@@ -43,7 +43,7 @@ and focus on the most relevant features for that garment. Include details such a
 - Fabric texture, material (e.g., cotton, wool, polyester), and color.
 
 Ensure that the description accurately reflects all visible design elements from the sketch and provides a clear understanding of the garment's aesthetic and functional aspects.
-""".format(product_name)
+""".format(user_input)
 
 messages = [
     {
