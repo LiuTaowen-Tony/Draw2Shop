@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import os
+import base64
 from dotenv import load_dotenv
 from openai import OpenAI
 from mistralai import Mistral
+
 load_dotenv()
 mistral_api_key = os.environ["MISTRAL_API_KEY"]
 
