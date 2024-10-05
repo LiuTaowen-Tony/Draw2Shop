@@ -28,10 +28,29 @@ const DrawingCanvas = () => {
         };
     }, []);
 
+    // Function to download the canvas content as an image
+    const handleDownload = () => {
+        const canvas = canvasRef.current;
+        const dataURL = canvas.toDataURL({
+            format: 'png',
+            quality: 1.0
+        });
+
+        // Create a temporary anchor element and trigger download
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'drawing.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div>
             <h1>Draw to Shop</h1>
             <canvas id="draw-canvas" width="500" height="500" style={{ border: "2px solid #000 !important" }} />
+            <br />
+            <button onClick={handleDownload}>Download</button>
         </div>
     );
 };
