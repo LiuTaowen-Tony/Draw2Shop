@@ -11,15 +11,13 @@ const DrawingCanvas = () => {
         // Enable drawing mode
         canvas.isDrawingMode = true;
 
-        // Initialize the brush after enabling drawing mode
-        if (canvas.freeDrawingBrush) {
+        // Ensure brush settings are applied after enabling drawing mode
+        if (canvas.isDrawingMode && canvas.freeDrawingBrush) {
             canvas.freeDrawingBrush.color = '#000000'; // Set brush color
-            canvas.freeDrawingBrush.width = 5; // Set brush size
-        } else {
-            console.error("Failed to initialize freeDrawingBrush.");
+            canvas.freeDrawingBrush.width = 5; // Set brush width
         }
 
-        // Cleanup function to avoid multiple canvas initialization
+        // Cleanup function to dispose of canvas on component unmount
         return () => {
             canvas.dispose(); // Dispose of canvas when the component unmounts
         };
@@ -29,7 +27,7 @@ const DrawingCanvas = () => {
     return (
         <div>
             <h1>Draw to Shop</h1>
-            <canvas id="draw-canvas" width="500" height="500" style={{ border: "1px solid #000" }} />
+            <canvas id="draw-canvas" width="700" height="700" style={{ border: "1px solid #000" }} />
         </div>
     );
 };
@@ -43,5 +41,3 @@ function App() {
 }
 
 export default App;
-
-
