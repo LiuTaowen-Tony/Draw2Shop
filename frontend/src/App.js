@@ -1,33 +1,37 @@
 import React, { useEffect, useRef } from 'react';
-import { Canvas } from 'fabric';
+import { fabric } from 'fabric';
 
 const DrawingCanvas = () => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
-        const canvas = new Canvas('draw-canvas');
+        // Create the fabric.js canvas
+        const canvas = new fabric.Canvas('draw-canvas');
         canvasRef.current = canvas;
 
         // Enable drawing mode
         canvas.isDrawingMode = true;
 
-        // Ensure brush settings are applied after enabling drawing mode
-        if (canvas.isDrawingMode && canvas.freeDrawingBrush) {
-            canvas.freeDrawingBrush.color = '#000000'; // Set brush color
-            canvas.freeDrawingBrush.width = 5; // Set brush width
-        }
+        // Set up brush properties
+        canvas.freeDrawingBrush.color = '#000000'; // Black brush color
+        canvas.freeDrawingBrush.width = 5; // Brush size
 
-        // Cleanup function to dispose of canvas on component unmount
+        // Log the canvas data every 2 seconds (this can be used to send data to the backend)
+        setInterval(() => {
+            const drawingDataURL = canvas.toDataURL(); // Get the image URL from the canvas
+            console.log('Canvas updated:', drawingDataURL);
+        }, 2000);
+
+        // Cleanup: dispose of the canvas when the component unmounts
         return () => {
-            canvas.dispose(); // Dispose of canvas when the component unmounts
+            canvas.dispose();
         };
-
     }, []);
 
     return (
         <div>
             <h1>Draw to Shop</h1>
-            <canvas id="draw-canvas" width="700" height="700" style={{ border: "1px solid #000" }} />
+            <canvas id="draw-canvas" width="500" height="500" style={{ border: "1px solid #000" }} />
         </div>
     );
 };
