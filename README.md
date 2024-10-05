@@ -6,4 +6,3 @@
 source init.sh
 
 ```
-
