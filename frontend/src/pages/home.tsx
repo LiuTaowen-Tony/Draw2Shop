@@ -4,9 +4,8 @@ import { CONFIG } from 'src/config-global';
 
 import { OverviewAnalyticsView } from 'src/sections/overview/view';
 //import { LeftCard } from 'src/custom_components/LeftCard';
-import LeftCard from "src/custom_components/LeftCard";
-import Grid from '@mui/material/Unstable_Grid2';
-import RightCard from "src/custom_components/RightCard";
+
+import MainPage from "src/custom_components/MainPage";
 
 // ----------------------------------------------------------------------
 
@@ -23,14 +22,7 @@ export default function Page() {
       </Helmet>
 
       {/* <OverviewAnalyticsView /> */}
-      <Grid container spacing={3}>
-            <Grid key={"left"} xs={12} sm={12} md={ 6}>
-              <LeftCard />
-            </Grid>
-            <Grid key={"right"} xs={12} sm={12} md={ 6}>
-              <RightCard />
-            </Grid>
-      </Grid>
+      <MainPage/>
 
     </>
   );
