@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#%%
 
 import os
 import base64
@@ -9,10 +10,13 @@ from mistralai import Mistral
 import serpapi 
 
 load_dotenv()
+openai_api_key = os.environ["OPENAI_API_KEY"]
 mistral_api_key = os.environ["MISTRAL_API_KEY"]
+serpapi_key = os.environ["SERPAPI_KEY"]
 
+#%%
 mistral = Mistral(api_key=mistral_api_key)
-openai = OpenAI()
+openai = OpenAI(api_key=openai_api_key)
 
 def encode_image(image_path):
     """Encode the image to base64."""
@@ -60,19 +64,57 @@ response = openai.images.generate(
   model="dall-e-3",
   prompt=caption,
   size="1024x1024",
-  quality="standard",
+  quality="hd",
   n=1,
+  response_format="b64_json",
 )
 
-image_url = response.data[0].url
-print(image_url)
+#%%
+image_b64_json = response.data[0].b64_json
+
+
+# Decode the base64 string
+image_data = base64.b64decode(image_b64_json)
+
+# Save to a JPG file
+with open('output_image.jpg', 'wb') as file:
+    file.write(image_data)
+
+#%%
+
+import requests
+imgur_client_id = "0a4874f7449388e"
+
+url = 'https://api.imgur.com/3/image'
+headers = {
+    'Authorization': f'Client-ID {imgur_client_id}'
+}
+
+files = {
+    'image': ('output_image.jpg', open('output_image.jpg', 'rb')),
+}
+
+data = {
+    'type': 'image',
+    'title': 'Simple upload',
+    'description': 'This is a simple image upload in Imgur'
+}
+
+response = requests.post(url, headers=headers, files=files, data=data)
+
+
+print(response.json())
+#%%
 
 params = {
   "engine": "google_reverse_image",
-  "image_url": image_url,
-  "api_key": os.environ["SERPAPI_KEY"]
+  "image_url": response.json()['data']['link'] ,
+  "api_key": serpapi_key
 }
 
 search = serpapi.search(params)
+# results = search.get_dict()
 
 print(search)
+
+# %%
