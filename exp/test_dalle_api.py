@@ -6,6 +6,7 @@ import base64
 from dotenv import load_dotenv
 from openai import OpenAI
 from mistralai import Mistral
+import serpapi 
 
 load_dotenv()
 mistral_api_key = os.environ["MISTRAL_API_KEY"]
@@ -63,5 +64,15 @@ response = openai.images.generate(
   n=1,
 )
 
-print(response.data[0].url)
+image_url = response.data[0].url
+print(image_url)
 
+params = {
+  "engine": "google_reverse_image",
+  "image_url": "https://i.imgur.com/5bGzZi7.jpg",
+  "api_key": os.environ["SERPAPI_KEY"]
+}
+
+search = serpapi.search(params)
+
+print(search)
