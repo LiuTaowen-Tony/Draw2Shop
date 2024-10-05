@@ -31,7 +31,7 @@ const DrawingCanvas = () => {
     return (
         <div>
             <h1>Draw to Shop</h1>
-            <canvas id="draw-canvas" width="500" height="500" style={{ border: "1px solid #000" }} />
+            <canvas id="draw-canvas" width="500" height="500" style={{ border: "2px solid #000 !important" }} />
         </div>
     );
 };
@@ -45,3 +45,5 @@ function App() {
 }
 
 export default App;
+
+
