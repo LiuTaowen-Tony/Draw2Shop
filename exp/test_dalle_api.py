@@ -69,7 +69,7 @@ print(image_url)
 
 params = {
   "engine": "google_reverse_image",
-  "image_url": "https://i.imgur.com/5bGzZi7.jpg",
+  "image_url": image_url,
   "api_key": os.environ["SERPAPI_KEY"]
 }
 
