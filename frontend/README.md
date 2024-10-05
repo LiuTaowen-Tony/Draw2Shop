@@ -1,45 +1,48 @@
-# Material UI - Next.js App Router example
+## Minimal UI ([Free version](https://free.minimals.cc/))
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app) with Material UI installed.
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## How to use
+![preview](public/assets/images/minimal-free-preview.jpg)
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+> Free React Admin Dashboard made with Material-UI components and React + Vite.js.
 
-<!-- #default-branch-switch -->
+## Pages
 
-```bash
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/material-ui-nextjs
-cd material-ui-nextjs
-```
+- [Dashboard](https://free.minimals.cc/)
+- [Users](https://free.minimals.cc/user)
+- [Products](https://free.minimals.cc/products)
+- [Blog](https://free.minimals.cc/blog)
+- [Sign in](https://free.minimals.cc/sign-in)
+- [Not found](https://free.minimals.cc/404)
 
-Install it and run:
+## Quick start
 
-```bash
-npm install
-npm run dev
-```
+- Clone the repo: `git clone https://github.com/minimal-ui-kit/material-kit-react.git`
+- Recommended: `Node.js v20.x`
+- **Install:** `npm i` or `yarn install`
+- **Start:** `npm run dev` or `yarn dev`
+- **Build:** `npm run build` or `yarn build`
+- Open browser: `http://localhost:3039`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Upgrade to PRO Version
 
-or:
+| Minimal Free                | [Minimal Pro](https://material-ui.com/store/items/minimal-dashboard/)                                   |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------ |
+| **6** Pages                 | **70+** Pages                                                                                           |
+| **Partial** theme customize | **Fully** theme customize                                                                               |
+| -                           | **Next.js** version                                                                                     |
+| -                           | **TypeScript** version (Standard Plus and Extended license)                                             |
+| -                           | Design **Figma** file (Standard Plus and Extended license)                                              |
+| -                           | Authentication with **Amplify**, **Auth0**, **JWT**, **Firebase** and **Supabase**                      |
+| -                           | Light/dark mode, right-to-left, form validation... ([+more components](https://minimals.cc/components)) |
+| -                           | Complete users flows                                                                                    |
+| -                           | 1 year of free updates / 6 months of technical support                                                  |
+| -                           | Learn more: [Package & license](https://docs.minimals.cc/package)                                       |
 
-<!-- #default-branch-switch -->
+## License
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/material-ui-nextjs)
+Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) license.
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/mui/material-ui/tree/master/examples/material-ui-nextjs)
+## Contact us
 
-## Learn more
-
-To learn more about this example:
-
-- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Customizing Material UI](https://mui.com/material-ui/customization/how-to-customize/) - approaches to customizing Material UI.
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation and continue by browsing the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+Email: support@minimals.cc
