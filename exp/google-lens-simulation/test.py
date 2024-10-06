@@ -7,18 +7,17 @@ search_url = "https://api.bing.microsoft.com/v7.0/images/visualsearch"
 
 # 请求体，使用公开可访问的图片 URL
 request_body = {
-    "imageInfo": {
+    "knowledgeRequest": json.dumps({"imageInfo": {
         "url": "https://i.imgur.com/JshCd3r.jpeg"
-    }
+    }})
 }
 
 headers = {
     'Ocp-Apim-Subscription-Key': 'c6fef8008b724a39b7a0f85a91245cae',
-    'Content-Type': 'application/json'
 }
 
 # 发送请求并检查响应
-response = requests.post(search_url, headers=headers, data=json.dumps(request_body))
+response = requests.post(search_url, headers=headers, files=request_body, params={"mkt": "en-us"})
 
 if response.status_code == 200:
     print("API 调用成功!")
