@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box';
-import DrawResults from './DrawResults'; // Adjust path as needed
+import DrawResults from './RefinedDrawingList'; // Adjust path as needed
 import { Drawing } from './Drawing';
 import Fab from '@mui/material/Fab';
 import { OutlinedInput } from '@mui/material';
@@ -10,10 +10,11 @@ import { OutlinedInput } from '@mui/material';
 type Props = {
   setUserDrawingB64: React.Dispatch<React.SetStateAction<string>>;
   setUserInput: (input: string) => void;
+  refinedImageURLs: string[];
 }
 
 
-export default function LeftBox({ setUserDrawingB64, setUserInput } : Props) {
+export default function LeftBox({ setUserDrawingB64, setUserInput, refinedImageURLs } : Props) {
   const FabInput = (
     <Fab 
       variant="extended"
@@ -44,6 +45,7 @@ export default function LeftBox({ setUserDrawingB64, setUserInput } : Props) {
         {FabInput}
         <Drawing setUserDrawingB64={setUserDrawingB64} />
       </Card>
+      <DrawResults refinedImageURLs={refinedImageURLs} />
     </Box>
   );
 };

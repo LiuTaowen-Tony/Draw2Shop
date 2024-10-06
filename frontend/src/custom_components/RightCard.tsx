@@ -7,13 +7,65 @@ import Pagination from '@mui/material/Pagination';
 
 import { _products } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
-import { ProductItem } from 'src/sections/product/product-item';
+import { Label } from 'src/components/label';
 import { ProductSort } from 'src/sections/product/product-sort';
 import { ProductFilters } from 'src/sections/product/product-filters';
+import { Typography } from '@mui/material';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+
+import { fCurrency } from 'src/utils/format-number';
 
 import type { FiltersProps } from 'src/sections/product/product-filters';
 
 // ----------------------------------------------------------------------
+
+
+export type RightSideProductItemProps = {
+  name: string;
+  price: number;
+  coverUrl: string;
+};
+
+export function RightSideProductItem({ product }: { product: RightSideProductItemProps }) {
+  const renderImg = (
+    <Box
+      component="img"
+      src={product.coverUrl}
+      sx={{
+        top: 0,
+        width: 1,
+        height: 1,
+        objectFit: 'cover',
+        position: 'absolute',
+      }}
+    />
+  );
+
+  const renderPrice = (
+    <Typography variant="subtitle1">
+      {fCurrency(product.price)}
+    </Typography>
+  );
+
+  return (
+    <Card>
+      <Box sx={{ pt: '100%', position: 'relative' }}>
+        {renderImg}
+      </Box>
+
+      <Stack spacing={2} sx={{ p: 3 }}>
+        <Link color="inherit" underline="hover" variant="subtitle2" noWrap>
+          {product.name}
+        </Link>
+
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          {renderPrice}
+        </Box>
+      </Stack>
+    </Card>
+  );
+}
 
 const GENDER_OPTIONS = [
   { value: 'men', label: 'Men' },
@@ -125,7 +177,7 @@ function ResultShow() {
       <Grid container spacing={1}>
         {_products.map((product) => (
           <Grid key={product.id} xs={8} sm={6} md={3}>
-            <ProductItem product={product} />
+            <RightSideProductItem product={product} />
           </Grid>
         ))}
       </Grid>

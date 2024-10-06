@@ -102,10 +102,7 @@ async function fetchOpenAI(api_key: string, prompt: string) {
 }
 
 
-function generateRandomFileName(extension: string = 'png'): string {
-  const randomName = `image_${Math.random().toString(36).substring(2, 15)}`;
-  return `${randomName}.${extension}`;
-}
+
 // async function uploadImgur(api_key: string, imageBase64: string) {
 
 //   try {
@@ -155,9 +152,6 @@ function generateRandomFileName(extension: string = 'png'): string {
 // }
 
 async function visualSearch(api_key: string, image_url: string) {
-  // const imageUrl = "https://contoso.com/path/image.jpg";
-
-  // Create a FormData object
   const formData = new FormData();
   formData.append('knowledgeRequest', JSON.stringify({
       imageInfo: {
@@ -225,17 +219,12 @@ async function visualSearch(api_key: string, image_url: string) {
 //   }
 // }
 
-
-async function generateImprovedSketch(api_keys, input_drawing: string, user_input: string) {
+async function generateImprovedSketch(api_keys: { [key: string]: string; } , input_drawing: string, user_input: string) {
   var image_urls = [];
   const caption = await fetchMistral(api_keys.mistral, input_drawing, user_input);
-  console.log(caption);
-  for (var i = 0; i != 1; i++){
+  for (var i = 0; i != 3; i++){
     const prompt = caption + "A super realistic image of the clothes."
     const image_url = await fetchOpenAI(api_keys.openai, prompt);
-    console.log(image_url);
-    // const image_url = await uploadImgur(api_keys.imgur, improvedDrawingB64);
-    console.log(image_url);
     image_urls.push(image_url);
   }
 
@@ -248,7 +237,10 @@ async function generateImprovedSketch(api_keys, input_drawing: string, user_inpu
 export default function MainPage() {
   // const [leftCardState, updateLeftCardState];
   const api_keys = {
-
+    "mistral": "YdTk1TSU2SsI0eKVh6fAigo5Ug7oGPEM",
+    "openai": "sk-PyJs9kMkVK3PdQAQQCTMHz-OUhM82o5SKMtRFkEV2cT3BlbkFJFfIWvZVbvKMFUCEpQlJ_WKeSN0uom1JtrgmPfbXokA",
+    "microsoft": "c6fef8008b724a39b7a0f85a91245cae",
+    "imgur": "0a4874f7449388e"
   }
   const [userDrawingB64, setUserDrawingB64] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -284,7 +276,7 @@ export default function MainPage() {
     <Box sx={{ p: 2, border: '1px' }}>
       <Grid container spacing={2}>
         <Grid key={"left"} xs={12} sm={12} md={6}>
-          <LeftBox setUserDrawingB64={setUserDrawingB64} setUserInput={setUserInput} />
+          <LeftBox setUserDrawingB64={setUserDrawingB64} setUserInput={setUserInput} refinedImageURLs={refinedImageURLs} refinedImageSelection={refinedImageSelection} setRefinedImageSelection={setRefinedImageSelection} resultImageURLs={resultImageURLs} setResultImageURLs={setResultImageURLs}/>
         </Grid>
         <Grid key={"right"} xs={12} sm={12} md={6}>
           <RightCard />
