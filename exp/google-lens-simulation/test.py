@@ -8,7 +8,7 @@ search_url = "https://api.bing.microsoft.com/v7.0/images/visualsearch"
 # 请求体，使用公开可访问的图片 URL
 request_body = {
     "knowledgeRequest": json.dumps({"imageInfo": {
-        "url": "https://i.imgur.com/JshCd3r.jpeg"
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-7V56QZzpNMuHljHWPSMMmG4T/user-ea1n1SBpuQ7ApZYw7MUYT7xE/img-IgNZTjzwgTErGZjBqLiZnmB2.png?st=2024-10-06T03%3A46%3A29Z&se=2024-10-06T05%3A46%3A29Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-10-05T23%3A22%3A45Z&ske=2024-10-06T23%3A22%3A45Z&sks=b&skv=2024-08-04&sig=gijOwWB6Y9CXcnMAGiRdkopZI747qeetsvmaThYeCFs%3D" 
     }})
 }
 

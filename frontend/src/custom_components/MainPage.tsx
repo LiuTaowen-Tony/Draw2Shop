@@ -248,10 +248,7 @@ async function generateImprovedSketch(api_keys, input_drawing: string, user_inpu
 export default function MainPage() {
   // const [leftCardState, updateLeftCardState];
   const api_keys = {
-    "mistral": "YdTk1TSU2SsI0eKVh6fAigo5Ug7oGPEM",
-    "openai": "sk-PyJs9kMkVK3PdQAQQCTMHz-OUhM82o5SKMtRFkEV2cT3BlbkFJFfIWvZVbvKMFUCEpQlJ_WKeSN0uom1JtrgmPfbXokA",
-    "microsoft": "c6fef8008b724a39b7a0f85a91245cae",
-    "imgur": "0a4874f7449388e"
+
   }
   const [userDrawingB64, setUserDrawingB64] = useState("");
   const [userInput, setUserInput] = useState("");
