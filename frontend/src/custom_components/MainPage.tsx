@@ -255,12 +255,26 @@ export default function MainPage() {
     }
     setOldUserInput(userInput);
     setOldUserDrawingB64(userDrawingB64);
+
+    // Get refined image URLs
     const image_urls = await generateImprovedSketch(api_keys, userDrawingB64, userInput);
     setRefinedImageURLs(image_urls);
     console.log(image_urls);
+
     setRefinedImageSelection(0);
+
+    // Perform visual search with Microsoft API
     const microsoftResult = await visualSearch(api_keys.microsoft, image_urls[0]);
     console.log(microsoftResult);
+
+    // Parse the result and extract 'name' and 'url' (contentUrl)
+    const parsedResults = microsoftResult.data.value.map(item => ({
+      name: item.name,
+      url: item.contentUrl
+    }));
+
+    console.log(parsedResults);
+    // You can now use parsedResults for whatever you need, e.g., update the page with the parsed results
   }
 
   // setInterval(
