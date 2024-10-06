@@ -46,3 +46,6 @@ CVS/
 # Node.js
 node_modules/
 
+.next/
+
+package-lock.json
