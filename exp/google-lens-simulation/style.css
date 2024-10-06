@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.image-container {
+    width: 70%;
+    padding: 20px;
+}
+
+.results-container {
+    width: 30%;
+    height: 100vh;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+}
