@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from '@mui/material/Card'
 import Canvas from 'src/custom_components/Canvas';
+import DrawResults from './DrawResults'; // Adjust path as needed
 
 
 async function fetchMistralAPI(api_key : string, image_url : string, user_input : string) {
@@ -104,6 +105,7 @@ export default function LeftCard() {
     <Card>
       <CallPixtralComponent />
       <Canvas />
+      <DrawResults /> {/* New Section */}
     </Card>
   )
 };

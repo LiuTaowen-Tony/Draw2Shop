@@ -1,0 +1,1 @@
+export * from '../../../custom_components/draw-view';
